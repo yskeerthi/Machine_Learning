@@ -1,0 +1,82 @@
+
+Open In Colab
+
+import pandas as pd
+import numpy as np
+data=pd.read_csv("/content/data.csv")
+data
+concepts=np.array(data)[:,:-1]
+concepts
+target=np.array(data)[:,-1]
+target
+def train(con,tar):
+  for i, val in enumerate(tar):
+    if val=='yes':
+      specific_h=con[i].copy()
+      break
+
+  for i, val in enumerate(con):
+    if tar[i]=='yes':
+      for x in range(len(specific_h)):
+        if val[x]!=specific_h[x]:
+          specific_h[x]='?'
+        else:
+          pass
+          return specific_h
+          print(specific_h)
+train(concepts,target)
+print(train(concepts,target))
+
+     
+['sunny' 'warm' 'normal' 'strong' 'warm' 'same']
+
+import pandas as pd
+import numpy as np
+data=pd.read_csv("/content/data.csv")
+data
+
+     
+sky	air temp	humidity	wind	water	forecast	enjoy sport
+0	sunny	warm	normal	strong	warm	same	yes
+1	sunny	warm	high	strong	warm	same	yes
+2	rainy	cold	high	strong	warm	change	no
+3	sunny	warm	high	strong	cool	change	yes
+
+concepts=np.array(data)[:,:-1]
+concepts
+     
+array([['sunny', 'warm', 'normal', 'strong', 'warm', 'same'],
+       ['sunny', 'warm', 'high', 'strong', 'warm', 'same'],
+       ['rainy', 'cold', 'high', 'strong', 'warm', 'change'],
+       ['sunny', 'warm', 'high', 'strong', 'cool', 'change']],
+      dtype=object)
+
+target=np.array(data)[:,-1]
+target
+
+     
+array(['yes', 'yes', 'no', 'yes'], dtype=object)
+
+def train(con,tar):
+  for i, val in enumerate(tar):
+    if val=='yes':
+      specific_h=con[i].copy()
+      break
+
+  for i, val in enumerate(con):
+    if tar[i]=='yes':
+      for x in range(len(specific_h)):
+        if val[x]!=specific_h[x]:
+          specific_h[x]='?'
+        else:
+          pass
+          return specific_h
+          print(specific_h)
+train(concepts,target)
+     
+array(['sunny', 'warm', 'normal', 'strong', 'warm', 'same'], dtype=object)
+
+print(train(concepts,target))
+
+     
+['sunny' 'warm' 'normal' 'strong' 'warm' 'same']
